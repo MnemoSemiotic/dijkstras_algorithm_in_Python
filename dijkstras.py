@@ -10,6 +10,9 @@ class Graph:
         for node in node_list:
             self.add_node(node)
 
+    def build_cost_tables(self):
+        for node in self.nodes_in_graph:
+            node.build_cost_table(self)
 
 class Node:
     def __init__(self, nodename, connections):
@@ -78,4 +81,5 @@ if __name__ == '__main__':
     # A.build_cost_table(graph)
     # print(A)
 
+    graph.build_cost_tables()
     print(graph.nodes_in_graph)
