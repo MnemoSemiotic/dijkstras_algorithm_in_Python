@@ -34,7 +34,22 @@ class Node:
         return f'nodename: {self.nodename}\nconnections: {self.connections}\ncost_table:\n {cost_table_header}{cost_table_str}'
 
     def build_cost_table(self, graph):
-        pass
+        '''
+        dijkstras
+
+        Let cost from this node to itself = 0
+        Populate the cost table entries with all nodes in the graph
+        Let distance to all other nodes = 10**9 (e.g. infinity)
+
+        Repeat:
+            Visit the unvisited node with the smallest known distance from this start node
+                For current node, examine its unvisited neighbors
+                For current node, calc the distance of each neighbor from this start node
+                if the calc'd distance of a node is less than the current distance in the cost_table, update the shortest distance in the cost table
+                Update the previous node for each updated distance
+                Add the current node to the list of visited nodes and remove it from the list of unvisited nodes
+        Until all nodes are visited
+        '''
 
 if __name__ == '__main__':
     # define nodes
