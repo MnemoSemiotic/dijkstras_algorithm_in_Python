@@ -10,6 +10,11 @@ class Graph:
         for node in node_list:
             self.add_node(node)
 
+    def get_node(self, nodename):
+        for node in self.nodes_in_graph:
+            if node.nodename == nodename:
+                return node
+
     def build_cost_tables(self):
         for node in self.nodes_in_graph:
             node.build_cost_table(self)
@@ -63,6 +68,29 @@ class Node:
 
         # Populate unvisited list with all nodenames
         unvisited = [node.nodename for node in graph.nodes_in_graph if node.nodename != self.nodename]
+
+        # instead of using a while loop, let's assume a max of N node in unvisited and create an exit condition
+        # step through the nodes, prioritizing the lowest cost nodes, and updating the cost table accordingly 
+        for _ in range(100):
+            # search for node with lowest cost
+            min_cost, min_node = min([(self.cost_table[nodename]['cost'], nodename) for nodename in unvisited])
+
+            min_node = graph.get_node(min_node)
+
+            for nodename, cost in min_node.connections.items():
+                dist_from_start = min_cost + cost
+
+                if dist_from_start < self.cost_table[nodename]['cost']:
+                    self.cost_table[nodename]['cost'] = dist_from_start
+                    self.cost_table[nodename]['previous'] = min_node.nodename
+
+                visited.append(min_node.nodename)
+
+                if min_node.nodename in unvisited:
+                    unvisited.remove(min_node.nodename)
+            
+            if len(unvisited) == 0:
+                break
 
 if __name__ == '__main__':
     # define nodes
