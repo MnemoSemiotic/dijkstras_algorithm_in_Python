@@ -39,10 +39,18 @@ class Node:
 if __name__ == '__main__':
     # define nodes
     A = Node('A', {'B': 5, 'C': 7, 'D': 2})
+    B = Node('B', {'A': 5, 'E': 4})
+    C = Node('C', {'A': 7, 'D': 3, 'F': 5})
+    D = Node('D', {'A': 2, 'C': 3, 'E': 4, 'G': 6})
+    E = Node('E', {'B': 4, 'D': 4, 'G': 2})
+    F = Node('F', {'C': 5, 'G': 7, 'H': 6 })
+    G = Node('G', {'D': 6, 'E': 2, 'F': 7, 'H': 3})
+    H = Node('H', {'F': 6, 'G': 3})
+
 
     # print(A)
 
     graph = Graph()
-    graph.add_nodes([A])
+    graph.add_nodes([A, B, C, D, E, F, G, H])
 
     print(graph.nodes_in_graph)
