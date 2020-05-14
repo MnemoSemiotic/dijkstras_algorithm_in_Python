@@ -50,6 +50,13 @@ class Node:
                 Add the current node to the list of visited nodes and remove it from the list of unvisited nodes
         Until all nodes are visited
         '''
+        visited = [self.nodename]
+
+        # Populate cost table entries with remaining nodes in the graph
+        # Let distance to all other nodes = 10**9 (standin for infinity)
+        for node in graph.nodes_in_graph:
+            if node.nodename not in self.cost_table:
+                self.cost_table[node.nodename] = {'cost': 10**9, 'previous': None}
 
 if __name__ == '__main__':
     # define nodes
@@ -67,5 +74,8 @@ if __name__ == '__main__':
 
     graph = Graph()
     graph.add_nodes([A, B, C, D, E, F, G, H])
+
+    # A.build_cost_table(graph)
+    # print(A)
 
     print(graph.nodes_in_graph)
