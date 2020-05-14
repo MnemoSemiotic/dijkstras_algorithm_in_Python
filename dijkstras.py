@@ -1,5 +1,14 @@
 
 class Graph: 
+    def __init__(self, nodes_in_graph=[]):
+        self.nodes_in_graph = nodes_in_graph
+
+    def add_node(self, node):
+        self.nodes_in_graph.append(node)
+
+    def add_nodes(self, node_list):
+        for node in node_list:
+            self.add_node(node)
 
 
 class Node:
@@ -35,3 +44,5 @@ if __name__ == '__main__':
 
     graph = Graph()
     graph.add_nodes([A])
+
+    print(graph.nodes_in_graph)
