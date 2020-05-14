@@ -61,6 +61,9 @@ class Node:
             if node.nodename not in self.cost_table:
                 self.cost_table[node.nodename] = {'cost': 10**9, 'previous': None}
 
+        # Populate unvisited list with all nodenames
+        unvisited = [node.nodename for node in graph.nodes_in_graph if node.nodename != self.nodename]
+
 if __name__ == '__main__':
     # define nodes
     A = Node('A', {'B': 5, 'C': 7, 'D': 2})
